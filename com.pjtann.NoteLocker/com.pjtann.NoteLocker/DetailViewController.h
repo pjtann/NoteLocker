@@ -20,6 +20,9 @@
 
 @property (weak, nonatomic) IBOutlet UITextField *dateModified;
 
+@property (weak, nonatomic) IBOutlet UITextField *noteTitle;
+
+
 @property (weak, nonatomic) IBOutlet UILabel *detailDescriptionLabel;
 
 @end

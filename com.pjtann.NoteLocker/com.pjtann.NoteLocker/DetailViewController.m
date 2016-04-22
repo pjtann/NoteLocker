@@ -9,10 +9,11 @@
 #import "DetailViewController.h"
 #import "AppDelegate.h"
 
-@interface DetailViewController ()
-
+// add delegate protocols to interface for this controller so we can send communication when textview and textfields begin to edit so we can clear them in apppropriate cases
+@interface DetailViewController () <UITextViewDelegate, UITextFieldDelegate>
 
 @end
+
 
 @implementation DetailViewController
 
@@ -37,6 +38,9 @@
         self.dateCreated.text = [[self.detailItem valueForKey:@"noteDateCreated"] description];
         self.dateModified.text = [[self.detailItem valueForKey:@"noteDateModified"] description];
         self.noteBodyText.text = [[self.detailItem valueForKey:@"noteBody"] description];
+        self.noteTitle.text = [[self.detailItem valueForKey:@"noteTitle"] description];
+        
+    
         
         // send Created date to formatting method
         NSString *sendString = self.dateCreated.text;
@@ -63,6 +67,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+
+    // make this controller delegate to recieve messages to allow us to clear those fields when editing begins by calling those editDidBegin methods
+    self.noteBodyText.delegate = self;
+    self.noteTitle.delegate = self;
+    
+    
+    
     [self configureView];
 }
 
@@ -70,10 +81,24 @@
 
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init]; //initialize
     [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss +0000"]; // assign expected format
+
     NSDate *dateFromString = [[NSDate alloc] init];
     dateFromString = [dateFormatter dateFromString:rawDate]; // convert from string to date
+    
+    //*******
+    
+    // attempting time zone conversion
+    NSTimeZone *inputTimeZone = [NSTimeZone timeZoneWithAbbreviation:@"UTC"];
+    NSDateFormatter *inputDateFormatter = [[NSDateFormatter alloc] init];
+    [inputDateFormatter setTimeZone:inputTimeZone];
+    [dateFormatter setTimeZone:[NSTimeZone localTimeZone]];
+    NSLog(@"time zone stuff..: %@", dateFormatter);
+    
+    // ******
+    
     [dateFormatter setDateFormat:@"MM-dd-yyyy hh:mm a"]; // assign desired format - the lower case hh instead of HH puts it into 12 hour clock, the a creates the am/pm at the end
     NSString *formattedDateString = [dateFormatter stringFromDate:dateFromString];// convert from data back to string
+
     
     return formattedDateString;
     
@@ -87,6 +112,7 @@
     NSString *entityName = @"Notes";
     NSManagedObject *newManagedObject = [NSEntityDescription insertNewObjectForEntityForName:entityName inManagedObjectContext:managedObjectContext];
     [newManagedObject setValue:[NSDate date] forKey:@"noteDateCreated"];
+    [newManagedObject setValue:self.noteTitle.text forKey:@"noteTitle"];
     [newManagedObject setValue:self.noteBodyText.text forKey:@"noteBody"];
     
     NSError *error = nil;
@@ -115,6 +141,7 @@
 
         // update the existing record/object
         [self.detailItem setValue:[NSDate date] forKey:@"noteDateModified"];
+        [self.detailItem setValue:self.noteTitle.text forKey:@"noteTitle"];
         [self.detailItem setValue:self.noteBodyText.text forKey:@"noteBody"];
    
     NSError *error = nil;
@@ -146,6 +173,7 @@
     if (self.detailItem) {
         // update the existing record/object
         [self.detailItem setValue:[NSDate date] forKey:@"noteDateModified"];
+        [self.detailItem setValue:self.noteTitle.text forKey:@"noteTitle"];
         [self.detailItem setValue:self.noteBodyText.text forKey:@"noteBody"];
         
     }else{
@@ -153,6 +181,7 @@
         NSString *entityName = @"Notes";
         NSManagedObject *newManagedObject = [NSEntityDescription insertNewObjectForEntityForName:entityName inManagedObjectContext:managedObjectContext];
         [newManagedObject setValue:[NSDate date] forKey:@"noteDateCreated"];
+        [newManagedObject setValue:self.noteTitle.text forKey:@"noteTitle"];
         [newManagedObject setValue:self.noteBodyText.text forKey:@"noteBody"];
 
         NSLog(@"Line to pause during breakpoint");
@@ -173,6 +202,31 @@
     [self performSegueWithIdentifier:@"segueFromDetailToMaster" sender:self];
     
 }
+
+// method called by delegate (in this case self = this controller) for text views
+- (void)textViewDidBeginEditing:(UITextView *)textView
+{
+
+    //if (!self.detailItem) {
+    
+    if (textView == self.noteBodyText && !self.detailItem) {
+        textView.text = @"";
+    }
+
+}
+// method called by delegate (in this case self = this controller) for text fields
+- (void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    
+    //if (!self.detailItem) {
+    
+    if (textField == self.noteTitle && !self.detailItem) {
+        textField.text = @"";
+    }
+    
+}
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
