@@ -8,6 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
+
+@class DetailViewController;
+
+@protocol DetailViewController <NSObject>
+
+// delegate method for use with sharing of the notes
+- (void) cell:(DetailViewController *)cell didLongPressTextView:(UITextView *)textView;
+
+@end
+
+
 @interface DetailViewController : UIViewController
 
 @property (nonatomic, strong) NSManagedObjectContext *myManagedObjectContext; // attempt to pass the managedObject to this detailed controller from Master controller
@@ -24,6 +35,9 @@
 
 
 @property (weak, nonatomic) IBOutlet UILabel *detailDescriptionLabel;
+
+
+
 
 @end
 

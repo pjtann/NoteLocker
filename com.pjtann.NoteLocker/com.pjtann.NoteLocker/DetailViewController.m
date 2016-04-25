@@ -10,12 +10,20 @@
 #import "AppDelegate.h"
 
 // add delegate protocols to interface for this controller so we can send communication when textview and textfields begin to edit so we can clear them in apppropriate cases
-@interface DetailViewController () <UITextViewDelegate, UITextFieldDelegate>
+@interface DetailViewController () <UITextViewDelegate, UITextFieldDelegate, UIGestureRecognizerDelegate>
+
+// propert for the long press to bring up sharing of the note
+@property (nonatomic, strong) UILongPressGestureRecognizer *longPressGestureRecognizer;
+
+// delegate property to use with the note sharing
+@property (nonatomic, weak) id <DetailViewController> delegate;
+
 
 @end
 
 
 @implementation DetailViewController
+
 
 #pragma mark - Managing the detail item
 
@@ -73,9 +81,47 @@
     self.noteTitle.delegate = self;
     
     
+    // long press gesture for use with sharing of notes
+    self.longPressGestureRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPressFired:)];
+    self.longPressGestureRecognizer.delegate = self;
+    [self.noteBodyText addGestureRecognizer:self.longPressGestureRecognizer];
+    
+    
+    
     
     [self configureView];
 }
+
+- (void) longPressFired:(UILongPressGestureRecognizer *)sender {
+    if (sender.state == UIGestureRecognizerStateBegan) {
+        //[self.delegate cell:self didLongPressTextView:self.noteBodyText];
+        
+        NSMutableArray *itemsToShare = [NSMutableArray array];
+        [itemsToShare addObject:self.noteBodyText];
+        if (itemsToShare.count > 0) {
+        UIActivityViewController *activityVC = [[UIActivityViewController alloc] initWithActivityItems:itemsToShare applicationActivities:nil];
+        [self presentViewController:activityVC animated:YES completion:nil];
+        }
+    }
+}
+
+- (void) cell:(DetailViewController *)cell didLongPressTextView:(UIImageView *)textView {
+    NSMutableArray *itemsToShare = [NSMutableArray array];
+    
+    //if (cell.mediaItem.caption.length > 0) {
+        [itemsToShare addObject:cell.noteBodyText];
+    //}
+    
+    //if (cell.mediaItem.image) {
+        //[itemsToShare addObject:cell.noteBodyText];
+    //}
+    
+    if (itemsToShare.count > 0) {
+        UIActivityViewController *activityVC = [[UIActivityViewController alloc] initWithActivityItems:itemsToShare applicationActivities:nil];
+        [self presentViewController:activityVC animated:YES completion:nil];
+    }
+}
+
 
 -(NSString *) dateFormat:(NSString *) rawDate{
 
