@@ -1,29 +1,26 @@
 //
-//  AppDelegate.h
+//  NoteLockerCoreData.h
 //  com.pjtann.NoteLocker
 //
-//  Created by PT on 4/12/16.
+//  Created by PT on 5/1/16.
 //  Copyright © 2016 PeterTanner. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
-@class NoteLockerCoreData;
+//#import <UIKit/UIKit.h>
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
 
-@property (strong, nonatomic) UIWindow *window;
+@interface NoteLockerCoreData : NSObject
 
 @property (readonly, strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 @property (readonly, strong, nonatomic) NSManagedObjectModel *managedObjectModel;
 @property (readonly, strong, nonatomic) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 
-@property (strong, nonatomic) NoteLockerCoreData *noteLocker;
++ (void)saveContext;
+- (NSURL *)applicationDocumentsDirectory;
 
-
-//- (void)saveContext;
-//- (NSURL *)applicationDocumentsDirectory;
+//+(void)initializeCoreData;
 
 
 @end
-

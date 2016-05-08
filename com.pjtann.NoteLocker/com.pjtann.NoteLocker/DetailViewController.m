@@ -97,7 +97,12 @@
         //[self.delegate cell:self didLongPressTextView:self.noteBodyText];
         
         NSMutableArray *itemsToShare = [NSMutableArray array];
-        [itemsToShare addObject:self.noteBodyText];
+        
+        
+        // FOR FRIDAY MEETING 04-29 = I had self.noteBodyText instead of self.noteBodyText.text. So we need to discuss why that makes the huge difference; one points to the text in the field, but the original one points to the field too; just not specifically the text??
+        
+        
+        [itemsToShare addObject:self.noteBodyText.text];
         if (itemsToShare.count > 0) {
         UIActivityViewController *activityVC = [[UIActivityViewController alloc] initWithActivityItems:itemsToShare applicationActivities:nil];
         [self presentViewController:activityVC animated:YES completion:nil];
@@ -109,7 +114,8 @@
     NSMutableArray *itemsToShare = [NSMutableArray array];
     
     //if (cell.mediaItem.caption.length > 0) {
-        [itemsToShare addObject:cell.noteBodyText];
+        //[itemsToShare addObject:cell.noteBodyText];
+        [itemsToShare addObject:self.noteBodyText.text];
     //}
     
     //if (cell.mediaItem.image) {

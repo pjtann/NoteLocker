@@ -17,6 +17,7 @@
 		6D0B2BC21CBDDAD3000A6283 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6D0B2BC01CBDDAD3000A6283 /* LaunchScreen.storyboard */; };
 		6D0B2BCD1CBDDAD4000A6283 /* com_pjtann_NoteLockerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D0B2BCC1CBDDAD4000A6283 /* com_pjtann_NoteLockerTests.m */; };
 		6D0B2BD81CBDDAD4000A6283 /* com_pjtann_NoteLockerUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D0B2BD71CBDDAD4000A6283 /* com_pjtann_NoteLockerUITests.m */; };
+		6D0B2BEC1CD684F8000A6283 /* NoteLockerCoreData.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D0B2BEB1CD684F8000A6283 /* NoteLockerCoreData.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +57,8 @@
 		6D0B2BD31CBDDAD4000A6283 /* com.pjtann.NoteLockerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = com.pjtann.NoteLockerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D0B2BD71CBDDAD4000A6283 /* com_pjtann_NoteLockerUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = com_pjtann_NoteLockerUITests.m; sourceTree = "<group>"; };
 		6D0B2BD91CBDDAD4000A6283 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6D0B2BEA1CD684F8000A6283 /* NoteLockerCoreData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoteLockerCoreData.h; sourceTree = "<group>"; };
+		6D0B2BEB1CD684F8000A6283 /* NoteLockerCoreData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoteLockerCoreData.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +120,8 @@
 				6D0B2BC01CBDDAD3000A6283 /* LaunchScreen.storyboard */,
 				6D0B2BC31CBDDAD3000A6283 /* Info.plist */,
 				6D0B2BB21CBDDAD3000A6283 /* com_pjtann_NoteLocker.xcdatamodeld */,
+				6D0B2BEA1CD684F8000A6283 /* NoteLockerCoreData.h */,
+				6D0B2BEB1CD684F8000A6283 /* NoteLockerCoreData.m */,
 				6D0B2BAC1CBDDAD3000A6283 /* Supporting Files */,
 			);
 			path = com.pjtann.NoteLocker;
@@ -283,6 +288,7 @@
 				6D0B2BB71CBDDAD3000A6283 /* MasterViewController.m in Sources */,
 				6D0B2BB41CBDDAD3000A6283 /* com_pjtann_NoteLocker.xcdatamodeld in Sources */,
 				6D0B2BB11CBDDAD3000A6283 /* AppDelegate.m in Sources */,
+				6D0B2BEC1CD684F8000A6283 /* NoteLockerCoreData.m in Sources */,
 				6D0B2BAE1CBDDAD3000A6283 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
