@@ -18,6 +18,9 @@
 		6D0B2BCD1CBDDAD4000A6283 /* com_pjtann_NoteLockerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D0B2BCC1CBDDAD4000A6283 /* com_pjtann_NoteLockerTests.m */; };
 		6D0B2BD81CBDDAD4000A6283 /* com_pjtann_NoteLockerUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D0B2BD71CBDDAD4000A6283 /* com_pjtann_NoteLockerUITests.m */; };
 		6D0B2BEC1CD684F8000A6283 /* NoteLockerCoreData.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D0B2BEB1CD684F8000A6283 /* NoteLockerCoreData.m */; };
+		6D0B2BF51CDFCEC0000A6283 /* ShareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D0B2BF41CDFCEC0000A6283 /* ShareViewController.m */; };
+		6D0B2BF81CDFCEC0000A6283 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6D0B2BF61CDFCEC0000A6283 /* MainInterface.storyboard */; };
+		6D0B2BFC1CDFCEC0000A6283 /* CopyContentToNoteExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 6D0B2BF11CDFCEC0000A6283 /* CopyContentToNoteExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,7 +38,28 @@
 			remoteGlobalIDString = 6D0B2BA81CBDDAD3000A6283;
 			remoteInfo = com.pjtann.NoteLocker;
 		};
+		6D0B2BFA1CDFCEC0000A6283 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6D0B2BA11CBDDAD3000A6283 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6D0B2BF01CDFCEC0000A6283;
+			remoteInfo = CopyContentToNoteExtension;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		6D0B2C001CDFCEC0000A6283 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				6D0B2BFC1CDFCEC0000A6283 /* CopyContentToNoteExtension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		6D0B2BA91CBDDAD3000A6283 /* com.pjtann.NoteLocker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = com.pjtann.NoteLocker.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -59,6 +83,11 @@
 		6D0B2BD91CBDDAD4000A6283 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6D0B2BEA1CD684F8000A6283 /* NoteLockerCoreData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoteLockerCoreData.h; sourceTree = "<group>"; };
 		6D0B2BEB1CD684F8000A6283 /* NoteLockerCoreData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoteLockerCoreData.m; sourceTree = "<group>"; };
+		6D0B2BF11CDFCEC0000A6283 /* CopyContentToNoteExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = CopyContentToNoteExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		6D0B2BF31CDFCEC0000A6283 /* ShareViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShareViewController.h; sourceTree = "<group>"; };
+		6D0B2BF41CDFCEC0000A6283 /* ShareViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShareViewController.m; sourceTree = "<group>"; };
+		6D0B2BF71CDFCEC0000A6283 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		6D0B2BF91CDFCEC0000A6283 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +112,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		6D0B2BEE1CDFCEC0000A6283 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -92,6 +128,7 @@
 				6D0B2BAB1CBDDAD3000A6283 /* com.pjtann.NoteLocker */,
 				6D0B2BCB1CBDDAD4000A6283 /* com.pjtann.NoteLockerTests */,
 				6D0B2BD61CBDDAD4000A6283 /* com.pjtann.NoteLockerUITests */,
+				6D0B2BF21CDFCEC0000A6283 /* CopyContentToNoteExtension */,
 				6D0B2BAA1CBDDAD3000A6283 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -102,6 +139,7 @@
 				6D0B2BA91CBDDAD3000A6283 /* com.pjtann.NoteLocker.app */,
 				6D0B2BC81CBDDAD4000A6283 /* com.pjtann.NoteLockerTests.xctest */,
 				6D0B2BD31CBDDAD4000A6283 /* com.pjtann.NoteLockerUITests.xctest */,
+				6D0B2BF11CDFCEC0000A6283 /* CopyContentToNoteExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -153,6 +191,17 @@
 			path = com.pjtann.NoteLockerUITests;
 			sourceTree = "<group>";
 		};
+		6D0B2BF21CDFCEC0000A6283 /* CopyContentToNoteExtension */ = {
+			isa = PBXGroup;
+			children = (
+				6D0B2BF31CDFCEC0000A6283 /* ShareViewController.h */,
+				6D0B2BF41CDFCEC0000A6283 /* ShareViewController.m */,
+				6D0B2BF61CDFCEC0000A6283 /* MainInterface.storyboard */,
+				6D0B2BF91CDFCEC0000A6283 /* Info.plist */,
+			);
+			path = CopyContentToNoteExtension;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -163,10 +212,12 @@
 				6D0B2BA51CBDDAD3000A6283 /* Sources */,
 				6D0B2BA61CBDDAD3000A6283 /* Frameworks */,
 				6D0B2BA71CBDDAD3000A6283 /* Resources */,
+				6D0B2C001CDFCEC0000A6283 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				6D0B2BFB1CDFCEC0000A6283 /* PBXTargetDependency */,
 			);
 			name = com.pjtann.NoteLocker;
 			productName = com.pjtann.NoteLocker;
@@ -209,6 +260,23 @@
 			productReference = 6D0B2BD31CBDDAD4000A6283 /* com.pjtann.NoteLockerUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		6D0B2BF01CDFCEC0000A6283 /* CopyContentToNoteExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6D0B2BFD1CDFCEC0000A6283 /* Build configuration list for PBXNativeTarget "CopyContentToNoteExtension" */;
+			buildPhases = (
+				6D0B2BED1CDFCEC0000A6283 /* Sources */,
+				6D0B2BEE1CDFCEC0000A6283 /* Frameworks */,
+				6D0B2BEF1CDFCEC0000A6283 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CopyContentToNoteExtension;
+			productName = CopyContentToNoteExtension;
+			productReference = 6D0B2BF11CDFCEC0000A6283 /* CopyContentToNoteExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -230,6 +298,10 @@
 						CreatedOnToolsVersion = 7.2.1;
 						TestTargetID = 6D0B2BA81CBDDAD3000A6283;
 					};
+					6D0B2BF01CDFCEC0000A6283 = {
+						CreatedOnToolsVersion = 7.2.1;
+						DevelopmentTeam = P96A547DPY;
+					};
 				};
 			};
 			buildConfigurationList = 6D0B2BA41CBDDAD3000A6283 /* Build configuration list for PBXProject "com.pjtann.NoteLocker" */;
@@ -248,6 +320,7 @@
 				6D0B2BA81CBDDAD3000A6283 /* com.pjtann.NoteLocker */,
 				6D0B2BC71CBDDAD4000A6283 /* com.pjtann.NoteLockerTests */,
 				6D0B2BD21CBDDAD4000A6283 /* com.pjtann.NoteLockerUITests */,
+				6D0B2BF01CDFCEC0000A6283 /* CopyContentToNoteExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -274,6 +347,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6D0B2BEF1CDFCEC0000A6283 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6D0B2BF81CDFCEC0000A6283 /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -309,6 +390,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		6D0B2BED1CDFCEC0000A6283 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6D0B2BF51CDFCEC0000A6283 /* ShareViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -321,6 +410,11 @@
 			isa = PBXTargetDependency;
 			target = 6D0B2BA81CBDDAD3000A6283 /* com.pjtann.NoteLocker */;
 			targetProxy = 6D0B2BD41CBDDAD4000A6283 /* PBXContainerItemProxy */;
+		};
+		6D0B2BFB1CDFCEC0000A6283 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6D0B2BF01CDFCEC0000A6283 /* CopyContentToNoteExtension */;
+			targetProxy = 6D0B2BFA1CDFCEC0000A6283 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -339,6 +433,14 @@
 				6D0B2BC11CBDDAD3000A6283 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		6D0B2BF61CDFCEC0000A6283 /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6D0B2BF71CDFCEC0000A6283 /* Base */,
+			);
+			name = MainInterface.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -502,6 +604,32 @@
 			};
 			name = Release;
 		};
+		6D0B2BFE1CDFCEC0000A6283 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				INFOPLIST_FILE = CopyContentToNoteExtension/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.peter-tanner.com-pjtann-NoteLocker.CopyContentToNoteExtension";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		6D0B2BFF1CDFCEC0000A6283 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				INFOPLIST_FILE = CopyContentToNoteExtension/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.peter-tanner.com-pjtann-NoteLocker.CopyContentToNoteExtension";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -540,6 +668,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		6D0B2BFD1CDFCEC0000A6283 /* Build configuration list for PBXNativeTarget "CopyContentToNoteExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6D0B2BFE1CDFCEC0000A6283 /* Debug */,
+				6D0B2BFF1CDFCEC0000A6283 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 
