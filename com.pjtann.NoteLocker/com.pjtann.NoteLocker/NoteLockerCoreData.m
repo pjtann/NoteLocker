@@ -61,7 +61,11 @@
 //    NSURL *storeURL = [[self applicationDocumentsDirectory]
 //                       URLByAppendingPathComponent:@"com_pjtann_NoteLocker.sqlite"];
     
-    NSURL *containerURL = [[NSFileManager defaultManager] containerURLForSecurityApplicationGroupIdentifier:@"group.blocnote"];
+    NSURL *directory = [[NSFileManager defaultManager] containerURLForSecurityApplicationGroupIdentifier:@"group.notelocker"];
+    NSURL *containerURL = [directory  URLByAppendingPathComponent:@"com_pjtann_NoteLocker.sqlite"];
+    
+    
+ //   NSURL *containerURL = [[NSFileManager defaultManager] containerURLForSecurityApplicationGroupIdentifier:@"group.notelocker"];
     
     
     
@@ -84,8 +88,7 @@
         // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
         NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
         abort();
-    }
-    
+    }    
     return _persistentStoreCoordinator;
 }
 

@@ -21,6 +21,10 @@
 		6D0B2BF51CDFCEC0000A6283 /* ShareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D0B2BF41CDFCEC0000A6283 /* ShareViewController.m */; };
 		6D0B2BF81CDFCEC0000A6283 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6D0B2BF61CDFCEC0000A6283 /* MainInterface.storyboard */; };
 		6D0B2BFC1CDFCEC0000A6283 /* CopyContentToNoteExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 6D0B2BF11CDFCEC0000A6283 /* CopyContentToNoteExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		6D7529AD1CF8A69D00B19F0F /* com_pjtann_NoteLocker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6D0B2BB21CBDDAD3000A6283 /* com_pjtann_NoteLocker.xcdatamodeld */; };
+		6D7529AE1CF8D35300B19F0F /* ShareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D0B2BF41CDFCEC0000A6283 /* ShareViewController.m */; };
+		6D7529AF1CF8E92D00B19F0F /* NoteLockerCoreData.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D0B2BEB1CD684F8000A6283 /* NoteLockerCoreData.m */; };
+		6D79B0851D030E7F00CA11F7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6D0B2BBE1CBDDAD3000A6283 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,6 +92,8 @@
 		6D0B2BF41CDFCEC0000A6283 /* ShareViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShareViewController.m; sourceTree = "<group>"; };
 		6D0B2BF71CDFCEC0000A6283 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
 		6D0B2BF91CDFCEC0000A6283 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6D7529AB1CEF5F9D00B19F0F /* com.pjtann.NoteLocker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = com.pjtann.NoteLocker.entitlements; sourceTree = "<group>"; };
+		6D7529AC1CEF5FA800B19F0F /* CopyContentToNoteExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = CopyContentToNoteExtension.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,6 +153,7 @@
 		6D0B2BAB1CBDDAD3000A6283 /* com.pjtann.NoteLocker */ = {
 			isa = PBXGroup;
 			children = (
+				6D7529AB1CEF5F9D00B19F0F /* com.pjtann.NoteLocker.entitlements */,
 				6D0B2BAF1CBDDAD3000A6283 /* AppDelegate.h */,
 				6D0B2BB01CBDDAD3000A6283 /* AppDelegate.m */,
 				6D0B2BB51CBDDAD3000A6283 /* MasterViewController.h */,
@@ -194,6 +201,7 @@
 		6D0B2BF21CDFCEC0000A6283 /* CopyContentToNoteExtension */ = {
 			isa = PBXGroup;
 			children = (
+				6D7529AC1CEF5FA800B19F0F /* CopyContentToNoteExtension.entitlements */,
 				6D0B2BF31CDFCEC0000A6283 /* ShareViewController.h */,
 				6D0B2BF41CDFCEC0000A6283 /* ShareViewController.m */,
 				6D0B2BF61CDFCEC0000A6283 /* MainInterface.storyboard */,
@@ -289,6 +297,11 @@
 					6D0B2BA81CBDDAD3000A6283 = {
 						CreatedOnToolsVersion = 7.2.1;
 						DevelopmentTeam = P96A547DPY;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 					6D0B2BC71CBDDAD4000A6283 = {
 						CreatedOnToolsVersion = 7.2.1;
@@ -301,6 +314,11 @@
 					6D0B2BF01CDFCEC0000A6283 = {
 						CreatedOnToolsVersion = 7.2.1;
 						DevelopmentTeam = P96A547DPY;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -354,6 +372,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6D79B0851D030E7F00CA11F7 /* Assets.xcassets in Resources */,
 				6D0B2BF81CDFCEC0000A6283 /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -369,6 +388,7 @@
 				6D0B2BB71CBDDAD3000A6283 /* MasterViewController.m in Sources */,
 				6D0B2BB41CBDDAD3000A6283 /* com_pjtann_NoteLocker.xcdatamodeld in Sources */,
 				6D0B2BB11CBDDAD3000A6283 /* AppDelegate.m in Sources */,
+				6D7529AE1CF8D35300B19F0F /* ShareViewController.m in Sources */,
 				6D0B2BEC1CD684F8000A6283 /* NoteLockerCoreData.m in Sources */,
 				6D0B2BAE1CBDDAD3000A6283 /* main.m in Sources */,
 			);
@@ -394,6 +414,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6D7529AD1CF8A69D00B19F0F /* com_pjtann_NoteLocker.xcdatamodeld in Sources */,
+				6D7529AF1CF8E92D00B19F0F /* NoteLockerCoreData.m in Sources */,
 				6D0B2BF51CDFCEC0000A6283 /* ShareViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -532,6 +554,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = com.pjtann.NoteLocker/com.pjtann.NoteLocker.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = com.pjtann.NoteLocker/Info.plist;
@@ -546,6 +569,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = com.pjtann.NoteLocker/com.pjtann.NoteLocker.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = com.pjtann.NoteLocker/Info.plist;
@@ -607,12 +631,14 @@
 		6D0B2BFE1CDFCEC0000A6283 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = CopyContentToNoteExtension/CopyContentToNoteExtension.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = CopyContentToNoteExtension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.peter-tanner.com-pjtann-NoteLocker.CopyContentToNoteExtension";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
 			};
 			name = Debug;
@@ -620,12 +646,14 @@
 		6D0B2BFF1CDFCEC0000A6283 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = CopyContentToNoteExtension/CopyContentToNoteExtension.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = CopyContentToNoteExtension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.peter-tanner.com-pjtann-NoteLocker.CopyContentToNoteExtension";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
 			};
 			name = Release;
@@ -676,6 +704,7 @@
 				6D0B2BFF1CDFCEC0000A6283 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

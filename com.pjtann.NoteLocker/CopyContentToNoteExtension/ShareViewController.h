@@ -8,7 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import <Social/Social.h>
+#import "NoteLockerCoreData.h"
 
 @interface ShareViewController : SLComposeServiceViewController
+
+@property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
+@property (strong, nonatomic) NoteLockerCoreData *noteLocker;
+
+
 
 @end
