@@ -228,8 +228,19 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Notes" id="Zdf-7t-Un8"/>
+                    <connections>
+                        <outlet property="searchDisplayController" destination="E6J-Zm-NwI" id="b4n-qt-BYc"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rux-fX-hf1" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="E6J-Zm-NwI">
+                    <connections>
+                        <outlet property="delegate" destination="7bK-jq-Zjz" id="m7c-2r-d5q"/>
+                        <outlet property="searchContentsController" destination="7bK-jq-Zjz" id="TAt-Dn-FcP"/>
+                        <outlet property="searchResultsDataSource" destination="7bK-jq-Zjz" id="Oq5-hO-tjY"/>
+                        <outlet property="searchResultsDelegate" destination="7bK-jq-Zjz" id="cXI-dF-fu6"/>
+                    </connections>
+                </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="709" y="-630"/>
         </scene>

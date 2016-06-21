@@ -18,6 +18,14 @@
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 
+// properties for the search - to store the results in an object and an array
+@property (strong, nonatomic) NSArray *searchResults;
+@property (strong, nonatomic) UISearchController *searchController;
+
+@property (strong, nonatomic) NSFetchRequest *searchFetchRequest;
+
+
+
 
 @end
 

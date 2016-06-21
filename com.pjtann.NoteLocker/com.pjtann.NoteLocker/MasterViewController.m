@@ -9,7 +9,8 @@
 #import "MasterViewController.h"
 #import "DetailViewController.h"
 
-@interface MasterViewController ()
+@interface MasterViewController () <UISearchResultsUpdating>
+
 
 @end
 
@@ -19,6 +20,30 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     self.navigationItem.leftBarButtonItem = self.editButtonItem;
+    
+    // ************ start of search controller stuff
+    
+    // Create the search results controller and store a reference to it.
+    //MasterViewController* searchResultsController = [[MasterViewController alloc] init];
+   // self.searchController = [[UISearchController alloc] initWithSearchResultsController:searchResultsController];
+    self.searchController = [[UISearchController alloc] initWithSearchResultsController:nil];
+    
+    // The searchcontroller's searchResultsUpdater property will contain our tableView.
+    self.searchController.searchResultsUpdater = self;
+    
+    // The searchBar contained in XCode's storyboard is a leftover from UISearchDisplayController.
+    self.searchController.searchBar.frame = CGRectMake(self.searchController.searchBar.frame.origin.x,
+                                                       self.searchController.searchBar.frame.origin.y,
+                                                       self.searchController.searchBar.frame.size.width, 44.0);
+    
+    self.tableView.tableHeaderView = self.searchController.searchBar;
+    
+    
+    
+    // ************ end of search controller stuff
+    
+    
+    
 
     UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)];
     self.navigationItem.rightBarButtonItem = addButton;
@@ -34,6 +59,9 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+
+
 
 - (void)insertNewObject:(id)sender {
    // NSManagedObjectContext *context = [self.fetchedResultsController managedObjectContext];
@@ -68,23 +96,41 @@
     }
 }
 
+
+
 #pragma mark - Table View
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     
-    return [[self.fetchedResultsController sections] count];
+    if (self.searchController.active) {
+        return 1;
+    } else {
+        return [[self.fetchedResultsController sections] count];
+    }
 
     
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    id <NSFetchedResultsSectionInfo> sectionInfo = [self.fetchedResultsController sections][section];
-    return [sectionInfo numberOfObjects];
+    if (self.searchController.active) {
+        return self.searchResults.count;
+    } else {
+        id <NSFetchedResultsSectionInfo> sectionInfo = [self.fetchedResultsController sections][section];
+        return [sectionInfo numberOfObjects];
+    }
     
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+
+    
+    // thought this would elminate the crashing, but doesn't seem to do anything
+    if (cell == nil){
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
+        
+    }
+    
     [self configureCell:cell atIndexPath:indexPath];
     
     return cell;
@@ -111,12 +157,45 @@
 }
 
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
-    NSManagedObject *object = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    NSManagedObject *object;
+    if (self.searchController.active) {
+        object = [self.searchResults objectAtIndex:indexPath.row];
+    } else {
+       object = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    }
+    
     cell.textLabel.text = [[ object valueForKey:@"noteTitle"] description];
     cell.detailTextLabel.text = [[object valueForKey:@"noteBody"] description];
     
     
 }
+
+
+#pragma mark - UISearchController
+
+-(void) updateSearchResultsForSearchController:(UISearchController *) searchController{
+    NSLog(@"searchbar text: %@",searchController.searchBar.text);
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Notes" inManagedObjectContext:self.managedObjectContext];
+    [fetchRequest setEntity:entity];
+    
+    // Set the batch size to a suitable number.
+    [fetchRequest setFetchBatchSize:20];
+    
+    // Edit the sort key as appropriate.
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"noteDateModified" ascending:NO];
+    
+    [fetchRequest setSortDescriptors:@[sortDescriptor]];
+    
+    
+    NSPredicate *predicate = [NSPredicate predicateWithFormat: @"noteBody CONTAINS[c] %@ OR noteTitle CONTAINS[c] %@", searchController.searchBar.text, searchController.searchBar.text];
+    [fetchRequest setPredicate:predicate];
+    self.searchResults = [self.managedObjectContext executeFetchRequest:fetchRequest error:nil];
+    
+    [self.tableView reloadData];
+    
+}
+
 
 #pragma mark - Fetched results controller
 
@@ -211,6 +290,25 @@
 
 -(IBAction)prepareForUnwind:(UIStoryboardSegue *)segue {
 }
+
+-(NSFetchRequest *) searchFetchRequest
+{
+    if (_searchFetchRequest != nil) {
+        return _searchFetchRequest;
+        
+    }
+    _searchFetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Title" inManagedObjectContext:self.managedObjectContext];
+    [_searchFetchRequest setEntity:entity];
+    
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"Title" ascending:YES];
+    NSArray *sortDescriptors = [NSArray arrayWithObjects:sortDescriptor, nil];
+    [_searchFetchRequest setSortDescriptors:sortDescriptors];
+    
+    return _searchFetchRequest;
+    
+}
+
 
 
 /*
