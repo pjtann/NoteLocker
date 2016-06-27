@@ -85,12 +85,70 @@
     self.longPressGestureRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPressFired:)];
     self.longPressGestureRecognizer.delegate = self;
     [self.noteBodyText addGestureRecognizer:self.longPressGestureRecognizer];
+ 
+    
+    //*&*&*&*&&*& data detection start
     
     
+    self.noteBodyText.editable = NO;
+    self.noteBodyText.dataDetectorTypes = UIDataDetectorTypeLink;
+    
+    // establish and initilize tap gesture recognizer
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(textTapped:)];
+    tap.delegate = self;
+    tap.numberOfTapsRequired = 1;
+   // [self.noteBodyText addGestureRecognizer:tap];
+    
+    [self.view addGestureRecognizer:tap];
+
+    
+    
+    //NSString *string = self.noteBodyText.text;
+
+//    NSError *error = nil;
+//    NSDataDetector *detector = [NSDataDetector dataDetectorWithTypes:NSTextCheckingTypeLink
+//    
+//                                                            error:&error];
+//    NSUInteger numberOfMatches = [detector numberOfMatchesInString:string
+//                                                           options:0
+//                                                             range:NSMakeRange(0, [string length])];
+//    
+    
+    
+    
+    // &**&&*&*&*& data detection end
     
     
     [self configureView];
 }
+
+//method for tap
+- (void) textTapped:(UITapGestureRecognizer *) recognizer{
+    
+    NSLog(@"Inside tap method... turning editable ON:");
+    
+   // if ([self.noteBodyText isFirstResponder]) {
+    if (self.noteBodyText.editable == YES) {
+        self.noteBodyText.editable = NO;
+        self.noteBodyText.dataDetectorTypes = UIDataDetectorTypeLink;
+    }else
+        self.noteBodyText.editable = YES;
+    [self.noteBodyText becomeFirstResponder];
+    
+
+}
+
+//- (void)textViewDidEndEditing:(UITextView *)textview
+//{
+//    NSLog(@"Inside textViewDidEndEditing... turning editable OFF:");
+//    self.noteBodyText.editable = NO;
+//    self.noteBodyText.dataDetectorTypes = UIDataDetectorTypeLink;
+//}
+
+
+
+
+
 
 - (void) longPressFired:(UILongPressGestureRecognizer *)sender {
     if (sender.state == UIGestureRecognizerStateBegan) {
@@ -155,6 +213,10 @@
     return formattedDateString;
     
 }
+
+
+
+
 
 
 -(void) addNote{
@@ -259,6 +321,8 @@
 - (void)textViewDidBeginEditing:(UITextView *)textView
 {
 
+    NSLog(@"Inside textViewDidBeginEditing..:");
+    
     //if (!self.detailItem) {
     
     if (textView == self.noteBodyText && !self.detailItem) {
@@ -266,9 +330,13 @@
     }
 
 }
+
+
+
 // method called by delegate (in this case self = this controller) for text fields
 - (void)textFieldDidBeginEditing:(UITextField *)textField
 {
+    NSLog(@"Inside textFieldDidBeginEditing... ");
     
     //if (!self.detailItem) {
     
@@ -277,6 +345,7 @@
     }
     
 }
+
 
 
 
