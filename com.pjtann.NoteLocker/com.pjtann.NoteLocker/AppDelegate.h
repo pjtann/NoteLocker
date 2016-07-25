@@ -20,6 +20,9 @@
 
 @property (strong, nonatomic) NoteLockerCoreData *noteLocker;
 
+- (BOOL) iCloudAccountIsSignedIn;
+
+
 
 //- (void)saveContext;
 //- (NSURL *)applicationDocumentsDirectory;

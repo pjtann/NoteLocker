@@ -31,6 +31,8 @@
     
     self.noteLocker = [[NoteLockerCoreData alloc] init];
     controller.managedObjectContext = self.noteLocker.managedObjectContext;
+   
+    [self iCloudAccountIsSignedIn];
     
     
     return YES;
@@ -73,19 +75,43 @@
 }
 
 
-//
-//#pragma mark - iCloud
-//- (BOOL)iCloudAccountIsSignedIn {
-//    NSLog(@"Running %@ '%@'", self.class, NSStringFromSelector(_cmd));
+
+#pragma mark - iCloud
+- (BOOL)iCloudAccountIsSignedIn {
+    NSLog(@"Running %@ '%@'", self.class, NSStringFromSelector(_cmd));
+   
+    
+    // Check for iCloud connectivity #1
+    NSURL *ubiq = [[NSFileManager defaultManager] URLForUbiquityContainerIdentifier:@"com.peter-tanner.com-pjtann-NoteLocker.CopyContentToNoteExtension"];
+    NSLog(@"ubiq value..: %@", ubiq);
+    
+    if (ubiq) {
+        NSLog(@"iCloud connected at %@", ubiq);
+        return YES;
+    } else {
+        NSLog(@"No iCloud access!");
+        return NO;
+    }
+    
+    // end of Check for iCloud connectivity #1
+    
+    // Check for iCloud connectivity #2
+    
 //    id token = [[NSFileManager defaultManager] ubiquityIdentityToken];
+//    
+//    NSLog(@"TOKEN...: %@", token);
+//    
 //    if (token) {
 //        NSLog(@"----iCloud is Logged In with token '%@' ----", token);
 //        return YES;
 //    }
 //    NSLog(@"---- iCloud is NOT Logged In ----");
 //    NSLog(@"Check these: Is iCloud Documents and Data enabled??? (Mac, IOS Device)--- iCloud Capability -App Target, ---- Code Sign Entitlements Error??");
-//    return NO; 
-//}
+//    return NO;
+    
+    // end of Check for iCloud connectivity #2
+    
+}
 
 
 
